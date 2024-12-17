@@ -14,7 +14,7 @@ A library for finding the most similar word from a list of words, supporting Jap
 
 ### Example
 ```js
-const { closeWords } = require('closeword');
+const { closeWords } = require('closewords');
 
 (async () => {
   const word = 'ねこ';

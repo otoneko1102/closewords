@@ -55,22 +55,14 @@ function jaccardSimilarity(a, b) {
 async function closeWords(word, candidates, raw = false) {
   return new Promise(async (resolve, reject) => {
     try {
-      if (typeof word !== "string")
-        throw new Error("word must be string.");
+      if (typeof word !== "string") throw new Error("word must be string.");
       if (
         !Array.isArray(candidates) ||
         !candidates.every((item) => typeof item === "string")
-      )
-        throw new Error(
-          "all elements in the candidates array must be string."
-        );
-      if (typeof raw !== "boolean")
-        throw new Error("raw must be boolean.");
+      ) throw new Error("all elements in the candidates array must be string.");
+      if (typeof raw !== "boolean") throw new Error("raw must be boolean.");
 
-      const romajiWords = await convertToRomajiMultiThread([
-        word,
-        ...candidates,
-      ]);
+      const romajiWords = await convertToRomajiMultiThread([word, ...candidates]);
       const [romajiWord, ...romajiCandidates] = romajiWords;
 
       const scores = candidates.map((candidate, index) => ({
