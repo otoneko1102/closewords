@@ -4,7 +4,7 @@ const wanakana = require("wanakana");
 const kuromoji = require("kuromoji");
 
 const tokenizerBuilder = kuromoji.builder({
-  dicPath: path.resolve(__dirname, "node_modules/kuromoji/dict"),
+  dicPath: path.resolve(__dirname, "node_modules/kuromoji/dict")
 });
 
 let tokenizer;
@@ -35,7 +35,8 @@ async function initializeTokenizer() {
  */
 function convertToRomajiMultiThread(words) {
   return new Promise((resolve, reject) => {
-    const worker = new Worker(__filename, { workerData: words });
+    const workerPath = path.resolve(__dirname, "./index.js");
+    const worker = new Worker(workerPath, { workerData: words });
     worker.on("message", resolve);
     worker.on("error", reject);
     worker.on("exit", code => {
