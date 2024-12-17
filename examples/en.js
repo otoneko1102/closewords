@@ -1,4 +1,4 @@
-const closeWords = require('../closewords');
+const { closeWords } = require('closewords');
 
 (async () => {
   const word = 'cat';
