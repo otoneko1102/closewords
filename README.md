@@ -37,9 +37,9 @@ const { closeWords } = require('closewords');
 結果: [ '猫' ]
 スコアを含む結果: [
   { word: '猫', score: 1 },
-  { word: 'ねころび', score: 0.5714285714285714 },
-  { word: 'ねずみ', score: 0.25 },
-  { word: 'いぬ', score: 0.16666666666666666 }
+  { word: 'ねころび', score: 0.9 },
+  { word: 'ねずみ', score: 0.611111111111111 },
+  { word: 'いぬ', score: 0.5277777777777778 }
 ]
 ```
 

@@ -1,3 +1,4 @@
+const jaroWinkler = require("jaro-winkler");
 const { Worker } = require("worker_threads");
 const path = require("path");
 
@@ -31,16 +32,6 @@ function convertToRomajiMultiThread(words) {
   });
 }
 
-function jaccardSimilarity(a, b) {
-  const setA = new Set(a.split(""));
-  const setB = new Set(b.split(""));
-
-  const intersection = [...setA].filter((char) => setB.has(char)).length;
-  const union = new Set([...setA, ...setB]).size;
-
-  return intersection / union;
-}
-
 /**
  * Finds the closest strings in an array to the given word.
  * 与えられた単語に最も近い単語を候補リストから探します。
@@ -67,7 +58,7 @@ async function closeWords(word, candidates, raw = false) {
 
       const scores = candidates.map((candidate, index) => ({
         word: candidate,
-        score: jaccardSimilarity(romajiWord, romajiCandidates[index]),
+        score: jaroWinkler(romajiWord, romajiCandidates[index]),
       }));
 
       scores.sort((a, b) => b.score - a.score);
