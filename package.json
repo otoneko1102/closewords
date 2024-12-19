@@ -1,6 +1,6 @@
 {
   "name": "closewords",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A library for finding the most similar word from a list of words, supporting Japanese (including kanji). / 最も似た単語を単語群から検索する日本語(漢字含む)対応のライブラリ",
   "main": "index.js",
   "types": "index.d.ts",
@@ -19,7 +19,11 @@
     "search",
     "jp",
     "japan",
-    "japanese"
+    "japanese",
+    "morphological analysis",
+    "levenshtein",
+    "eval",
+    "evaluate"
   ],
   "author": "otoneko.",
   "license": "ISC",
@@ -28,6 +32,7 @@
   },
   "homepage": "https://github.com/otoneko1102/closewords#readme",
   "dependencies": {
+    "fast-levenshtein": "^3.0.0",
     "jaro-winkler": "^0.2.8",
     "kuromoji": "^0.1.2",
     "wanakana": "^5.3.1"

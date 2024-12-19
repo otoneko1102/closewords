@@ -11,6 +11,10 @@ A library for finding the most similar word from a list of words, supporting Jap
 
 ## Usage
 - **closeWords(word: string, candidates: string[], raw?:boolean(default: false)): Promise\<string[] | Array\<{ word: string, score: number }\>\>**
+The highest score is 1 (the lowest is 0).<br>
+A score of 1 means a perfect character-by-character match.<br>
+スコアの最高値は1です(最低値は0です)。<br>
+スコアが1の場合、文字列が完全に一致していることを示します。
 
 ### Example
 ```js
@@ -36,12 +40,25 @@ const { closeWords } = require('closewords');
 ```
 結果: [ '猫' ]
 スコアを含む結果: [
-  { word: '猫', score: 1 },
-  { word: 'ねころび', score: 0.9 },
-  { word: 'ねずみ', score: 0.611111111111111 },
-  { word: 'いぬ', score: 0.5277777777777778 }
+  { word: '猫', score: 0.5 },
+  { word: 'ねころび', score: 0.44999999999999996 },
+  { word: 'ねずみ', score: 0.31481481481481477 },
+  { word: 'いぬ', score: 0.2638888888888889 }
 ]
 ```
 
+## Change Log
+### 1.0.2 --> 2.0.0
+Introduced `fast-levenshtein` and fixed score calculation. The similarity of the original strings is also evaluated.<br>
+`fast-levenshtein` を導入し、スコア計算方法を修正しました。元の文字列の一致度も評価されるようになりました。
+### 1.0.1 --> 1.0.2
+Introduced `jaro-winkler` and optimized.<br>
+`jaro-winkler` を導入し、最適化しました。
+### 1.0.0 --> 1.0.1
+Fixed score calculation.<br>
+スコア計算方法を修正しました。
+### 0.x --> 1.0.0
+Package released! Introducing morphological analysis.<br>
+パッケージをリリース！ 形態素解析を導入しました。
 ## Get Support
 <a href="https://discord.gg/yKW8wWKCnS"><img src="https://discordapp.com/api/guilds/1005287561582878800/widget.png?style=banner4" alt="Discord Banner"/></a>
