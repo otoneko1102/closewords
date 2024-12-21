@@ -12,6 +12,6 @@ const { closeWords } = require('closewords');
     const resultWithScores = await closeWords(word, candidates, true);
     console.log('Result with score:', resultWithScores);
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error('Error:', error);
   }
 })();

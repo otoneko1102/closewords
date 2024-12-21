@@ -1,10 +1,21 @@
 /**
+ * A type representing an alphabetic string.
+ * アルファベット文字列を表す型。
+ */
+export type AlphabeticString = string & { __alphabeticString?: never };
+
+/**
+ * Represents a candidate object with optional pronounce property.
+ * pronounce プロパティは任意で、アルファベット文字列のみを受け入れます。
+ */
+export interface Candidate {
+  word: string; // Candidate word. / 候補単語
+  pronounce?: AlphabeticString; // Optional alphabetic string. / 任意のアルファベット文字列
+}
+
+/**
  * Represents the result of a similarity comparison.
  * 類似度比較の結果を表します。
- *
- * @interface closeWordsResult
- * @property {string} word - Candidate word. / 候補単語
- * @property {number} score - Similarity score. / 類似度スコア
  */
 export interface closeWordsResult {
   word: string; // Candidate word. / 候補単語
@@ -17,13 +28,13 @@ export interface closeWordsResult {
  * 
  * @async
  * @function closeWords
- * @param {string | { word: string, pronounce: string }} word - The reference word or object. / 比較対象の単語またはオブジェクト
- * @param {Array<string | { word: string, pronounce: string }>} candidates - Candidate words or objects. / 候補リスト
+ * @param {string | Candidate} word - The reference word or object. / 比較対象の単語またはオブジェクト
+ * @param {Array<string | Candidate>} candidates - Candidate words or objects. / 候補リスト
  * @param {boolean} [raw=false] - Whether to include similarity scores. / 類似度スコアを含むか
- * @returns {Promise<string[] | Array<{ word: string, score: number }>>} The closest word(s) or detailed scores. / 最も類似した単語または詳細なスコア
+ * @returns {Promise<string[] | closeWordsResult[]>} The closest word(s) or detailed scores. / 最も類似した単語または詳細なスコア
  */
 export function closeWords(
-  word: string,
-  candidates: string[],
+  word: string | Candidate,
+  candidates: Array<string | Candidate>,
   raw?: boolean
-): string[] | closeWordsResult[];
+): Promise<string[] | closeWordsResult[]>;

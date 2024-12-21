@@ -10,7 +10,7 @@ A library for finding the most similar word from a list of words, supporting Jap
 <a href="https://www.otoho.me/"><img src="https://www.otoho.me/img/logo.png" alt="Oto Home" style="display: block; width: auto; height: 100px;"/></a>
 
 ## Usage
-##### **closeWords(word: string | { word: string, pronounce: string }, candidates: Array\<string | { word: string, pronounce: string }\>, raw?:boolean(default: false)): Promise\<string[] | Array\<{ word: string, score: number }\>\>**
+##### **closeWords(word: string | { word: string, pronounce?: string }, candidates: Array\<string | { word: string, pronounce?: string }\>, raw?:boolean(default: false)): Promise\<string[] | Array\<{ word: string, score: number }\>\>**
 The highest score is 1 (the lowest is 0).<br>
 A score of 1 means a perfect character-by-character match.<br>
 スコアの最高値は1です(最低値は0です)。<br>
@@ -32,7 +32,7 @@ const { closeWords } = require('closewords');
     const resultWithScores = await closeWords(word, candidates, true);
     console.log('スコアを含む結果:', resultWithScores);
   } catch (error) {
-    console.error('Error:', error.message);
+    console.error('Error:', error);
   }
 })();
 ```
@@ -51,6 +51,19 @@ const { closeWords } = require('closewords');
 ```
 
 ## Change Log
+### 2.1.0 --> 2.1.1
+Fixed README.<br>
+Fixed the issue that only a string could be specified in `word`.<br>
+Fixed the issue that `word.pronounce` was ignored.<br>
+Fixed the issue that non-alphabet could be specified for `word.pronounce` and `pronounce` in `candidates[]`.<br>
+`word.pronounce` and `pronounce` in `candidates[]` are now optional.<br>
+Fixed a few pther bugs.<br>
+`README` を修正しました。<br>
+`word` に文字列以外指定できない問題を修正しました。<br>
+`word.pronounce` が無視される問題を修正しました。<br>
+`word.pronounce` と `candidates[]` 内の `pronounce` にアルファベット以外を指定できる問題を修正しました。<br>
+`word.pronounce` と `candidates[]` 内の `pronounce` を任意にしました。<br>
+その他数件のバグを修正しました。
 ### 2.0.0 --> 2.1.0
 Added a way to specify the pronunciation of words.<br>
 単語の発音を指定する方法を追加しました。
