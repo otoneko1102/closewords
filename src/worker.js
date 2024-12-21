@@ -25,7 +25,9 @@ async function initializeTokenizer() {
 
     const romajiWords = words.map((word) => {
       try {
-        const tokens = tokenizerInstance.tokenize(word);
+        const isWordObject = typeof word === "object";
+        const targetWord = isWordObject ? word : { pronounce: word };
+        const tokens = tokenizerInstance.tokenize(targetWord.pronounce);
         const hiragana = tokens.map((token) => token.reading || token.surface_form).join('');
         return wanakana.toRomaji(hiragana);
       } catch (tokenizeErr) {

@@ -1,16 +1,16 @@
 const { closeWords } = require('closewords');
 
 (async () => {
-  const word = 'cat';
-  const candidates = ['dog', 'mouse', 'cat', 'kitten'];
+  const word = '東京';
+  const candidates = ['東京', 'とっこう', '東きょう', 'とう京', 'とうきょう', 'とーきょー'];
 
   try {
     const result = await closeWords(word, candidates);
-    console.log('Most similar word:', result);
+    console.log('Result:', result);
 
     // raw: true
     const resultWithScores = await closeWords(word, candidates, true);
-    console.log('Detailed result with scores:', resultWithScores);
+    console.log('Result with score:', resultWithScores);
   } catch (error) {
     console.error('Error:', error.message);
   }

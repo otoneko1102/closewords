@@ -1,8 +1,8 @@
 const { closeWords } = require('closewords');
 
 (async () => {
-  const word = 'ねこ';
-  const candidates = ['いぬ', 'ねずみ', '猫', 'ねころび'];
+  const word = '東京';
+  const candidates = ['東京', 'とっこう', '東きょう', 'とう京', 'とうきょう', 'とーきょー'];
 
   try {
     const result = await closeWords(word, candidates);

@@ -17,8 +17,8 @@ export interface closeWordsResult {
  * 
  * @async
  * @function closeWords
- * @param {string} word - The reference word. / 比較対象の単語
- * @param {string[]} candidates - Array of candidate words. / 候補リスト
+ * @param {string | { word: string, pronounce: string }} word - The reference word or object. / 比較対象の単語またはオブジェクト
+ * @param {Array<string | { word: string, pronounce: string }>} candidates - Candidate words or objects. / 候補リスト
  * @param {boolean} [raw=false] - Whether to include similarity scores. / 類似度スコアを含むか
  * @returns {Promise<string[] | Array<{ word: string, score: number }>>} The closest word(s) or detailed scores. / 最も類似した単語または詳細なスコア
  */

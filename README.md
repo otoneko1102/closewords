@@ -21,8 +21,8 @@ A score of 1 means a perfect character-by-character match.<br>
 const { closeWords } = require('closewords');
 
 (async () => {
-  const word = 'ねこ';
-  const candidates = ['いぬ', 'ねずみ', '猫', 'ねころび'];
+  const word = '東京';
+  const candidates = ['東京', 'とっこう', '東きょう', 'とう京', 'とうきょう', 'とーきょー'];
 
   try {
     const result = await closeWords(word, candidates);
@@ -36,14 +36,17 @@ const { closeWords } = require('closewords');
   }
 })();
 ```
+
 ### Result
 ```
-結果: [ '猫' ]
+結果: [ '東京' ]
 スコアを含む結果: [
-  { word: '猫', score: 0.5 },
-  { word: 'ねころび', score: 0.44999999999999996 },
-  { word: 'ねずみ', score: 0.31481481481481477 },
-  { word: 'いぬ', score: 0.2638888888888889 }
+  { word: '東京', score: 1 },
+  { word: 'とう京', score: 0.6466666666666666 },
+  { word: '東きょう', score: 0.4409090909090909 },
+  { word: 'とうきょう', score: 0.42 },
+  { word: 'とっこう', score: 0.36933333333333324 },
+  { word: 'とーきょー', score: 0.356 }
 ]
 ```
 
