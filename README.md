@@ -10,7 +10,7 @@ A library for finding the most similar word from a list of words, supporting Jap
 <a href="https://www.otoho.me/"><img src="https://www.otoho.me/img/logo.png" alt="Oto Home" style="display: block; width: auto; height: 100px;"/></a>
 
 ## Usage
-- **closeWords(word: string, candidates: string[], raw?:boolean(default: false)): Promise\<string[] | Array\<{ word: string, score: number }\>\>**
+##### **closeWords(word: string | { word: string, pronounce: string }, candidates: Array\<string | { word: string, pronounce: string }\>, raw?:boolean(default: false)): Promise\<string[] | Array\<{ word: string, score: number }\>\>**
 The highest score is 1 (the lowest is 0).<br>
 A score of 1 means a perfect character-by-character match.<br>
 スコアの最高値は1です(最低値は0です)。<br>
@@ -51,6 +51,9 @@ const { closeWords } = require('closewords');
 ```
 
 ## Change Log
+### 2.0.0 --> 2.1.0
+Added a way to specify the pronunciation of words.<br>
+単語の発音を指定する方法を追加しました。
 ### 1.0.2 --> 2.0.0
 Introduced `fast-levenshtein` and fixed score calculation. The similarity of the original strings is also evaluated.<br>
 `fast-levenshtein` を導入し、スコア計算方法を修正しました。元の文字列の一致度も評価されるようになりました。
