@@ -11,10 +11,7 @@ function convertToRomajiMultiThread(words) {
       workerData: { words, dicPath: path.resolve(__dirname, "./lib/dict") },
     });
 
-    let hasResponded = false;
-
     worker.on("message", (message) => {
-      hasResponded = true;
       if (message.error) {
         reject(new Error(message.error));
       } else {
@@ -23,14 +20,11 @@ function convertToRomajiMultiThread(words) {
     });
 
     worker.on("error", (err) => {
-      hasResponded = true;
       reject(err);
     });
 
     worker.on("exit", (code) => {
-      if (!hasResponded) {
-        reject(new Error(`Worker stopped unexpectedly with exit code ${code}`));
-      }
+      reject(new Error(`Worker stopped unexpectedly with exit code ${code}`));
     });
   });
 }
