@@ -128,10 +128,10 @@ async function closeWords(word, candidates, raw = false) {
         const lengthPenalty = Math.max(0.7, 1 - Math.abs(baseLength - candidateLength) / baseLength);
 
         // 部分一致
-        const substringBonus = substringRatio > 0.5 ? substringRatio * 0.1 : 0;
+        const substringBonus = substringRatio > 0.5 ? substringRatio * 0.05 : 0;
 
         const combinedScore =
-          (romajiScore * 0.6 + stringScore * 0.1 + kanjiRatio * 0.3) * lengthPenalty +
+          (romajiScore * 0.7 + stringScore * 0.2 + kanjiRatio * 0.1) * lengthPenalty +
           exactKanjiBonus +
           substringBonus;
 
