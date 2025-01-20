@@ -130,6 +130,7 @@ async function closeWords(word, candidates, raw = false) {
         // 部分一致
         const substringBonus = substringRatio > 0.5 ? substringRatio * 0.05 : 0;
 
+        // スコア算出
         const combinedScore =
           (romajiScore * 0.7 + stringScore * 0.2 + kanjiRatio * 0.1) * lengthPenalty +
           exactKanjiBonus +
