@@ -31,7 +31,7 @@ function convertToRomajiMultiThread(words) {
 
 /**
  * A candidate object with an optional pronounce property.
- * pronounce プロパティは任意で、アルファベット文字列のみを受け入れます。
+ * pronounce は任意で、アルファベット文字列のみを受け入れます。
  * 
  * @typedef {Object} Candidate
  * @property {string} word - Candidate word. / 候補単語

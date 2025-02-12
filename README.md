@@ -51,6 +51,9 @@ const { closeWords } = require('closewords');
 ```
 
 ## Change Log
+### 2.1.4 --> 2.2.0
+`word.pronounce` and `pronounce` in `candidates[]` are completed Hepburn-style.
+`word.pronounce` と `candidates[]` 内の `pronounce` をヘボン式で補完するようにしました。
 ### 2.1.3 --> 2.1.4
 Fixed bugs.<br>
 バグを修正しました。
@@ -61,7 +64,7 @@ Fixed score calculation.<br>
 Fixed score calculation.<br>
 スコア計算方法を修正しました。
 ### 2.1.0 --> 2.1.1
-Fixed README.<br>
+Fixed `README`.<br>
 Fixed the issue that only a string could be specified in `word`.<br>
 Fixed the issue that `word.pronounce` was ignored.<br>
 Fixed the issue that non-alphabet could be specified for `word.pronounce` and `pronounce` in `candidates[]`.<br>

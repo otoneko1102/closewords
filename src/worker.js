@@ -3,6 +3,7 @@ const kuromoji = require("kuromoji");
 const wanakana = require("wanakana");
 
 const isAlphabetOnly = require('../src/isAlphabetOnly');
+const toHepburn = require('../src/toHepburn');
 
 let tokenizer;
 
@@ -28,12 +29,16 @@ async function initializeTokenizer() {
     const romajiWords = words.map((word) => {
       try {
         const isWordObject = typeof word === "object";
-        if (isWordObject && word.pronounce) return word.pronounce;
+        if (isWordObject && word.pronounce) {
+          const toHepburnString = toHepburn(word.pronounce);
+          return toHepburnString;
+        };
         if (isAlphabetOnly(word)) return word;
         const targetWord = isWordObject ? word.word : word;
         const tokens = tokenizerInstance.tokenize(targetWord);
         const hiragana = tokens.map((token) => token.reading || token.surface_form).join('');
-        return wanakana.toRomaji(hiragana);
+        const toRomajiString = wanakana.toRomaji(hiragana);
+        return toRomajiString;
       } catch (tokenizeErr) {
         throw new Error(`Error processing word "${targetWord}": ${tokenizeErr}`);
       }
