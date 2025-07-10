@@ -25,7 +25,7 @@ export interface closeWordsResult {
 /**
  * Finds the closest strings in an array to the given word.
  * 与えられた単語に最も近い単語を候補リストから探します。
- * 
+ *
  * @async
  * @function closeWords
  * @param {string | Candidate} word - The reference word or object. / 比較対象の単語またはオブジェクト
