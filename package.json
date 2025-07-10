@@ -1,6 +1,6 @@
 {
   "name": "closewords",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "A library for finding the most similar word from a list of words, supporting Japanese (including kanji). / 最も似た単語を単語群から検索する日本語(漢字含む)対応のライブラリ",
   "main": "index.js",
   "types": "index.d.ts",
