@@ -47,7 +47,7 @@
     "wanakana": "^5.3.1"
   },
   "devDependencies": {
-    "@types/node": "^25.2.3",
+    "@types/node": "^25.3.0",
     "fs-extra": "^11.3.3"
   }
 }
